@@ -8,71 +8,100 @@
 </head>
 <body>
     
-    <div class="relative h-full w-fit" id="IMG_ALL">
-            <img src="./Time_Zone_Imga/-11.png" class="absolute h-full opacity-80" id="-11"/>
+    <div class="relative h-full w-fit">
+            <!--<canvas id="Canvas-11">
+                <img src="./Time_Zone_Imga/-11.png" class="absolute h-full opacity-80" id="-11"/>
+            </canvas>
+            <canvas></canvas>
             <img src="./Time_Zone_Imga/-10.png" class="absolute h-full opacity-80" id="-10"/>
+            <canvas></canvas>
             <img src="./Time_Zone_Imga/-9.png" class="absolute h-full opacity-80" id="-9"/>
+            <canvas></canvas>
             <img src="./Time_Zone_Imga/-8.png" class="absolute h-full opacity-80" id="-8"/>
+            <canvas></canvas>
             <img src="./Time_Zone_Imga/-7.png" class="absolute h-full opacity-80" id="-7"/>
+            <canvas></canvas>
             <img src="./Time_Zone_Imga/-6.png" class="absolute h-full opacity-80" id="-6"/>
+            <canvas></canvas>
             <img src="./Time_Zone_Imga/-5.png" class="absolute h-full opacity-80" id="-5"/>
+            <canvas></canvas>
             <img src="./Time_Zone_Imga/-4.png" class="absolute h-full opacity-80" id="-4"/>
+            <canvas></canvas>
             <img src="./Time_Zone_Imga/-3.png" class="absolute h-full opacity-80" id="-3"/>
+            <canvas></canvas>
             <img src="./Time_Zone_Imga/-2.png" class="absolute h-full opacity-80" id="-2"/>
+            <canvas></canvas>
             <img src="./Time_Zone_Imga/-1.png" class="absolute h-full opacity-80" id="-1"/>
+            <canvas></canvas>
             <img src="./Time_Zone_Imga/0.png" class="absolute h-full opacity-80" id="0"/>
+
             <img src="./Time_Zone_Imga/+1.png" class="absolute h-full opacity-80" id="+1"/>
+
             <img src="./Time_Zone_Imga/+2.png" class="absolute h-full opacity-80" id="+2"/>
+
             <img src="./Time_Zone_Imga/+3.png" class="absolute h-full opacity-80" id="+3"/>
+
             <img src="./Time_Zone_Imga/+4.png" class="absolute h-full opacity-80" id="+4">
+
             <img src="./Time_Zone_Imga/+5.png" class="absolute h-full opacity-80" id="+5"/>
+
             <img src="./Time_Zone_Imga/+6.png" class="absolute h-full opacity-80" id="+6"/>
+
             <img src="./Time_Zone_Imga/+7.png" class="absolute h-full opacity-80" id="+7"/>
+
             <img src="./Time_Zone_Imga/+8.png" class="absolute h-full opacity-80" id="+8"/>
+
             <img src="./Time_Zone_Imga/+9.png" class="absolute h-full opacity-80" id="+9"/>
+
             <img src="./Time_Zone_Imga/+10.png" class="absolute h-full opacity-80" id="+10"/>
+
             <img src="./Time_Zone_Imga/+11.png" class="absolute h-full opacity-80" id="+11"/>
-            <img src="./Time_Zone_Imga/+12.png" class="absolute h-full opacity-80" id="+12"/>
-            <img src="./Time_Zone_Imga/+13.png" class="absolute h-full opacity-80" id="+13"/>
-        <img src="fuseau-heure.gif" class="image1 h-full">
-    </div>
+
+            <img src="./Time_Zone_Imga/+12.png" class="absolute h-full opacity-80" id="+12"/>-->
+            <div >
+                <canvas id="Canvas+13" class="absolute pointer-events-none top-0 left-0 h-full w-full"></canvas>
+                <img src="./Time_Zone_Imga/+13.png" class="absolute h-full block" id="+13"/>
+            </div>
+                <img src="fuseau-heure.gif" class="image1 h-full" id="IMG_ALL">
+        </div>
+
     <h1 id="H1">x : 0 // y : 0</h1>
+    <div id="div2" class="bg-black size-16"></div>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     <script>
-         var IMG_All = document.getElementById('IMG_ALL')
-         var H1 = document.getElementById('H1')
-         var xMousePos = 0;
-         var yMousePos = 0;
-         var M11 = document.getElementById("-11")
-         var M10 = document.getElementById("-10")
-         var M9 = document.getElementById("-9")
-         var M8 = document.getElementById("-8")
-         var M7 = document.getElementById("-7")
-         var M6 = document.getElementById("-6")
-         var M5 = document.getElementById("-5")
-         var M4 = document.getElementById("-4")
-         var M3 = document.getElementById("-3")
-         var M2 = document.getElementById("-2")
-         var M1 = document.getElementById("-1")
-         var N0 = document.getElementById("0")
-         var P1 = document.getElementById("+1")
-         var P2 = document.getElementById("+2")
-         var P3 = document.getElementById("+3")
-         var P4 = document.getElementById("+4")
-         var P5 = document.getElementById("+5")
-         var P6 = document.getElementById("+6")
-         var P7 = document.getElementById("+7")
-         var P8 = document.getElementById("+8")
-         var P9 = document.getElementById("+9")
-         var P10 = document.getElementById("+10")
-         var P12 = document.getElementById("+12")
-         var P13 = document.getElementById("+13")
-         IMG_ALL.onmousemove = function(e){
-         xMousePos = e.clientX + window.pageXOffset;
-         yMousePos = e.clientY + window.pageYOffset;
-         console.log(xMousePos,yMousePos)
-         H1.innerText = ("x : "+ xMousePos+ " // y : " + yMousePos)
-         console.log(P13.getImageData = 100, 100)
+        // Variables
+        const IMG_P13 = document.getElementById('+13'); // L'image
+        const canvasP13 = document.getElementById('Canvas+13'); // Le canvas
+        const ctx_P13 = canvasP13.getContext('2d'); // Contexte du canvas
+        const div2 = document.getElementById('div2'); // Div pour afficher la couleur
+        const h1 = document.getElementById('H1'); // Coordonnées souris
+
+        // Lorsque l'image est chargée
+        IMG_P13.onload = function () {
+            // Ajuster la taille du canvas à celle de l'image
+            canvasP13.width = IMG_P13.width;
+            canvasP13.height = IMG_P13.height;
+
+            // Dessiner l'image sur le canvas
+            ctx_P13.IMG_P13(baseImage, 0, 0);
+        };
+
+        // Fonction pour gérer le survol de la souris
+        IMG_P13.onmousemove = function (e) {
+            // Obtenir les coordonnées relatives à l'image
+            const rect = IMG_P13.getBoundingClientRect();
+            const xMousePos = e.clientX - rect.left;
+            const yMousePos = e.clientY - rect.top;
+
+            // Afficher les coordonnées dans le h1
+            h1.innerText = `x : ${xMousePos} // y : ${yMousePos}`;
+
+            // Obtenir la couleur du pixel à la position
+            const imageData = ctx_P13.getImageData(xMousePos, yMousePos, 1, 1);
+            const [r, g, b, a] = imageData.data; // Couleurs RGBA
+
+            // Appliquer la couleur au div
+            div2.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${a / 255})`;
         };
     </script>
 </head>
