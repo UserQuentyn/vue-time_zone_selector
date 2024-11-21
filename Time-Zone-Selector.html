@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="relative h-full w-fit" id="IMG_ALL">
+            <img src="vue-time_zone_selector/Time_Zone_Imga/-11.png" class="absolute h-full opacity-80" id="-11"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/-10.png" class="absolute h-full opacity-80" id="-10"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/-9.png" class="absolute h-full opacity-80" id="-9"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/-8.png" class="absolute h-full opacity-80" id="-8"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/-7.png" class="absolute h-full opacity-80" id="-7"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/-6.png" class="absolute h-full opacity-80" id="-6"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/-5.png" class="absolute h-full opacity-80" id="-5"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/-4.png" class="absolute h-full opacity-80" id="-4"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/-3.png" class="absolute h-full opacity-80" id="-3"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/-2.png" class="absolute h-full opacity-80" id="-2"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/-1.png" class="absolute h-full opacity-80" id="-1"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/0.png" class="absolute h-full opacity-80" id="0"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/+1.png" class="absolute h-full opacity-80" id="+1"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/+2.png" class="absolute h-full opacity-80" id="+2"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/+3.png" class="absolute h-full opacity-80" id="+3"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/+4.png" class="absolute h-full opacity-80" id="+4">
+            <img src="vue-time_zone_selector/Time_Zone_Imga/+5.png" class="absolute h-full opacity-80" id="+5"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/+6.png" class="absolute h-full opacity-80" id="+6"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/+7.png" class="absolute h-full opacity-80" id="+7"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/+8.png" class="absolute h-full opacity-80" id="+8"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/+9.png" class="absolute h-full opacity-80" id="+9"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/+10.png" class="absolute h-full opacity-80" id="+10"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/+11.png" class="absolute h-full opacity-80" id="+11"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/+12.png" class="absolute h-full opacity-80" id="+12"/>
+            <img src="vue-time_zone_selector/Time_Zone_Imga/+13.png" class="absolute h-full opacity-80" id="+13"/>
+        <img src="vue-time_zone_selector/fuseau-heure.gif" class="image1 h-full">
+    </div>
+    <h1 id="H1">x : 0 // y : 0</h1>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script>
+         var IMG_All = document.getElementById('IMG_ALL')
+         var H1 = document.getElementById('H1')
+         var xMousePos = 0;
+         var yMousePos = 0;
+         var M11 = document.getElementById("-11")
+         var M10 = document.getElementById("-10")
+         var M9 = document.getElementById("-9")
+         var M8 = document.getElementById("-8")
+         var M7 = document.getElementById("-7")
+         var M6 = document.getElementById("-6")
+         var M5 = document.getElementById("-5")
+         var M4 = document.getElementById("-4")
+         var M3 = document.getElementById("-3")
+         var M2 = document.getElementById("-2")
+         var M1 = document.getElementById("-1")
+         var N0 = document.getElementById("0")
+         var P1 = document.getElementById("+1")
+         var P2 = document.getElementById("+2")
+         var P3 = document.getElementById("+3")
+         var P4 = document.getElementById("+4")
+         var P5 = document.getElementById("+5")
+         var P6 = document.getElementById("+6")
+         var P7 = document.getElementById("+7")
+         var P8 = document.getElementById("+8")
+         var P9 = document.getElementById("+9")
+         var P10 = document.getElementById("+10")
+         var P12 = document.getElementById("+12")
+         var P13 = document.getElementById("+13")
+         IMG_ALL.onmousemove = function(e){
+         xMousePos = e.clientX + window.pageXOffset;
+         yMousePos = e.clientY + window.pageYOffset;
+         console.log(xMousePos,yMousePos)
+         H1.innerText = ("x : "+ xMousePos+ " // y : " + yMousePos)
+         
+         };
+    </script>
+</head>
+</body>
+</html>

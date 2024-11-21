@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div >
+        <img src="vue-time_zone_selector/fuseau-heure.gif" class="image1 h-full" id="IMG_ALL">
+        <h1 id="H1">x : 0 // y : 0</h1>
+    </div>
+</body>
+<script>
+    var IMG_All = document.getElementById('IMG_ALL')
+    var H1 = document.getElementById('H1')
+    var xMousePos = 0;
+    var yMousePos = 0;
+    IMG_ALL.onmousemove = function(e){
+    xMousePos = e.clientX + window.pageXOffset;
+    yMousePos = e.clientY + window.pageYOffset;
+    console.log(xMousePos,yMousePos)
+    H1.innerText = ("x : "+ xMousePos+ " // y : " + yMousePos)
+
+    };</script>
+</html>
