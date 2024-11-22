@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <div class="relative h-full w-fit">
+    <div class="relative">
             <!--<canvas id="Canvas-11">
                 <img src="./Time_Zone_Imga/-11.png" class="absolute h-full opacity-80" id="-11"/>
             </canvas>
@@ -55,36 +55,42 @@
 
             <img src="./Time_Zone_Imga/+10.png" class="absolute h-full opacity-80" id="+10"/>
 
-            <img src="./Time_Zone_Imga/+11.png" class="absolute h-full opacity-80" id="+11"/>
-
-            <img src="./Time_Zone_Imga/+12.png" class="absolute h-full opacity-80" id="+12"/>-->
-            <div >
-                <canvas id="Canvas+13" class="absolute pointer-events-none top-0 left-0 h-full w-full"></canvas>
-                <img src="./Time_Zone_Imga/+13.png" class="absolute h-full block" id="+13"/>
+            <img src="./Time_Zone_Imga/+11.png" class="absolute h-full opacity-80" id="+11"/>-->
+            <div id="DivCanvas+12" class="opacity-90">
+                <canvas id="Canvas+12" class="absolute pointer-events-none top-0 left-0 h-fit"></canvas>
+                <img src="./Time_Zone_Imga/+12.png" class="absolute h-full opacity-80" id="+12"/>
+            </div>
+            <div id="DivCanvas+13" class="opacity-80">
+                <canvas id="Canvas+13" class="absolute pointer-events-none top-0 left-0 h-fit"></canvas>
+                <img src="./Time_Zone_Imga/+13.png" class="absolute" id="+13"/>
             </div>
                 <img src="fuseau-heure.gif" class="image1 h-full" id="IMG_ALL">
         </div>
 
     <h1 id="H1">x : 0 // y : 0</h1>
     <div id="div2" class="bg-black size-16"></div>
+    <div id="div3" class="bg-red-600 size-16"></div>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     <script>
         // Variables
+        const IMG_ALL = document.getElementById("IMG_ALL")
         const IMG_P13 = document.getElementById('+13'); // L'image
         const canvasP13 = document.getElementById('Canvas+13'); // Le canvas
         const ctx_P13 = canvasP13.getContext('2d'); // Contexte du canvas
         const div2 = document.getElementById('div2'); // Div pour afficher la couleur
         const h1 = document.getElementById('H1'); // Coordonnées souris
-
+        const div3 = document.getElementById('div3')
+        const DivP13 = document.getElementById("DivCanvas+13")
         // Lorsque l'image est chargée
-        IMG_P13.onload = function () {
-            // Ajuster la taille du canvas à celle de l'image
-            canvasP13.width = IMG_P13.width;
-            canvasP13.height = IMG_P13.height;
-
-            // Dessiner l'image sur le canvas
-            ctx_P13.IMG_P13(baseImage, 0, 0);
-        };
+        
+        // Ajuster la taille du canvas à celle de l'image
+        canvasP13.width = IMG_P13.width;
+        canvasP13.height = IMG_P13.height;
+        IMG_ALL.width = canvasP13.width;
+        IMG_ALL.height = canvasP13.height;
+        // Dessiner l'image sur le canvas
+        ctx_P13.drawImage(IMG_P13, 0, 0);
+        
 
         // Fonction pour gérer le survol de la souris
         IMG_P13.onmousemove = function (e) {
@@ -92,16 +98,61 @@
             const rect = IMG_P13.getBoundingClientRect();
             const xMousePos = e.clientX - rect.left;
             const yMousePos = e.clientY - rect.top;
-
+        
             // Afficher les coordonnées dans le h1
             h1.innerText = `x : ${xMousePos} // y : ${yMousePos}`;
-
             // Obtenir la couleur du pixel à la position
-            const imageData = ctx_P13.getImageData(xMousePos, yMousePos, 1, 1);
-            const [r, g, b, a] = imageData.data; // Couleurs RGBA
-
+            const imageData13 = ctx_P13.getImageData(xMousePos, yMousePos, 1, 1);
+            const [r13, g, b, a] = imageData13.data; // Couleurs RGB
             // Appliquer la couleur au div
-            div2.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${a / 255})`;
+            div2.style.backgroundColor = `rgba(${r13}, ${g}, ${b}, ${a / 255})`;
+            if(a >= 200){
+                div3.style.backgroundColor = "green";
+                DivP13.style.opacity = "0.5"
+                }
+                else{
+                    div3.style.backgroundColor = "red";
+                    DivP13.style.opacity = "0.8"
+                }
+        };
+        const IMG_P12 = document.getElementById('+12'); // L'image
+        const canvasP12 = document.getElementById('Canvas+12'); // Le canvas
+        const ctx_P12 = canvasP12.getContext('2d'); // Contexte du canvas
+        const DivP12 = document.getElementById("DivCanvas+12")
+
+        canvasP12.width = IMG_P12.width;
+        canvasP12.height = IMG_P12.height;
+        IMG_ALL.width = canvasP12.width;
+        IMG_ALL.height = canvasP12.height;
+        // Dessiner l'image sur le canvas
+        ctx_P12.drawImage(IMG_P12, 0, 0);
+        console.log("12kjnfdndd")
+        
+
+        // Fonction pour gérer le survol de la souris
+        IMG_P12.onmousemove = function (e) {
+            console("fddhhhzfdhfdhhfdhg")
+            // Obtenir les coordonnées relatives à l'image
+            const rectP12 = IMG_P12.getBoundingClientRect();
+            const xMousePosP12 = e.clientX - rectP12.left;
+            const yMousePosP12 = e.clientY - rectP12.top;
+        
+            // Afficher les coordonnées dans le h1
+            h1.innerText = `x : ${xMousePosP12} // y : ${yMousePosP12}`;
+            // Obtenir la couleur du pixel à la position
+            const imageDataP12 = ctx_P12.getImageData(xMousePosP12, yMousePosP12, 1, 1);
+            const [r12, g12, b12, a12] = imageDataP12.data; // Couleurs RGB
+        
+            // Appliquer la couleur au div
+            div2.style.backgroundColor = `rgba(${rP12}, ${gP12}, ${aP12 / 255})`;
+            if(aP12 >= 200){
+                div3.style.backgroundColor = "green";
+                DivP12.style.opacity = "0.5"
+                }
+                else{
+                    div3.style.backgroundColor = "red";
+                    DivP12.style.opacity = "0.8"
+                }
         };
     </script>
 </head>
