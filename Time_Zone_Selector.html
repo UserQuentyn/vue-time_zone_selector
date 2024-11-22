@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 
+    pc : chrome.exe --disable-web-security --user-data-dir="C:/ChromeDev"
+    mac : open -na "Google Chrome" --args --disable-web-security --user-data-dir="/tmp/ChromeDev"
+    -->
+
+    <div class="flex flex-col">
+        <div style=height:750px>
+            <div id="canvasContainer" class="relative mt-5">
+                <img src="./Assets/fuseau-heure.png" class="absolute" id="IMG_ALL"></img>
+            </div>
+        </div>
+        
+
+        <h1 id="H1" class="mt-5 text-5xl">x : 0 / y : 0 Zone : ?</h1>
+        
+    </div>
+    
+    
+
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script>
+
+
+        const imageUrls = [ {id:-11, url:"./Assets/-11.png"},
+                            {id:-10,url:"./Assets/-10.png"},
+                            {id:-9,url:"./Assets/-9.png"},
+                            {id:-8,url:"./Assets/-8.png"},
+                            {id:-7,url:"./Assets/-7.png"},
+                            {id:-6,url:"./Assets/-6.png"},
+                            {id:-5,url:"./Assets/-5.png"},
+                            {id:-4,url:"./Assets/-4.png"},
+                            {id:-3,url:"./Assets/-3.png"},
+                            {id:-2,url:"./Assets/-2.png"},
+                            {id:-1,url:"./Assets/-1.png"},
+                            {id:0,url:"./Assets/0.png"},
+                            {id:1,url:"./Assets/+1.png"},
+                            {id:2,url:"./Assets/+2.png"},
+                            {id:3,url:"./Assets/+3.png"},
+                            {id:4,url:"./Assets/+4.png"},
+                            {id:5,url:"./Assets/+5.png"},
+                            {id:6,url:"./Assets/+6.png"},
+                            {id:7,url:"./Assets/+7.png"},
+                            {id:8,url:"./Assets/+8.png"},
+                            {id:9,url:"./Assets/+9.png"},
+                            {id:10,url:"./Assets/+10.png"},
+                            {id:11,url:"./Assets/+11.png"},
+                            {id:12,url:"./Assets/+12.png"},
+                            {id:13,url:"./Assets/+13.png"}]
+
+        const canvasContainer = document.getElementById('canvasContainer');
+        const allCanvas = []
+
+        imageUrls.forEach((item) => {
+        fetch(item.url)
+            .then((response) => {
+                if (!response.ok) {
+                throw new Error(`Erreur de chargement : ${url}`);
+            }
+            return response.blob(); // Convertit la réponse en blob
+            })
+            .then((blob) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                    // Crée un canvas pour chaque image
+                    canvas = document.createElement("canvas");
+                    const ctx = canvas.getContext("2d");
+
+                    // Ajuste la taille du canvas à celle de l'image
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+
+                    // Dessine l'image sur le canvas
+                    ctx.drawImage(img, 0, 0);
+
+                    // ajouter des classes
+                    canvas.classList.add("absolute");
+                    //canvas.classList.add("h-full");
+                    canvas.classList.add("opacity-80");
+                    canvas.classList.add("z-40");
+
+                    // Ajoute le canvas au conteneur
+                    canvasContainer.appendChild(canvas);
+                    allCanvas.push({id:item.id,canvas:canvas})
+                    //console.log(item.id)
+                    };
+                    img.src = e.target.result; // Définit la source de l'image comme Data URL
+                    var H1 = document.getElementById('H1')
+                    var xMousePos = 0;
+                    var yMousePos = 0;
+                    canvasContainer.onmouseleave = function(e){
+                        allCanvas.forEach((item) => {
+                            item.canvas.classList.remove("opacity-10")
+                            item.canvas.classList.add("transition-opacity");
+                        })
+
+                    }
+                        canvasContainer.onmousemove = function(e){
+                            const canvas = document.createElement("canvas");
+                            const ctx = canvas.getContext("2d");
+                            xMousePos = e.clientX + window.pageXOffset;
+                            yMousePos = e.clientY + window.pageYOffset;
+                            //console.log(xMousePos,yMousePos)
+                            
+                            //const imageData = ctx.getImageData(xMousePos, yMousePos, 1, 1);
+                            //const [r, g, b, a] = imageData.data; // Couleurs RGBA
+                            allCanvas.forEach((item) => {
+                                const ctxItem = item.canvas.getContext("2d");
+                                const imageDataItem = ctxItem.getImageData(xMousePos, yMousePos, 1, 1);
+                                const [r, g, b, a] = imageDataItem.data; // Couleurs RGBA
+                                //console.log(imageDataItem)
+                                //(imageUrls[item.id].url).style.opacity = "10"
+                                if (a > 0){
+                                    //console.log(item.id , item.canvas)
+                                    H1.innerText = ("x : "+ xMousePos+ " // y : " + yMousePos + " Zone "+ item.id)
+                                    item.canvas.classList.add("opacity-10");
+
+                                }
+                                else{
+                                    item.canvas.classList.remove("opacity-10")
+                                    item.canvas.classList.add("transition-opacity");
+                                }
+                            })
+                            // Appliquer la couleur au div
+                            //console.log([r,g,b,a])
+                            //ColorSquare.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${a / 255})`;
+                            //imageUrls[2].style.opacity = "0"
+                            };
+                    
+                };
+            reader.readAsDataURL(blob); // Lit le blob comme une Data URL
+            })
+            .catch((error) => {
+            console.error("Erreur lors du traitement de l'image :", error);
+            });
+        });
+
+
+    </script>
+</head>
+</body>
+</html>
