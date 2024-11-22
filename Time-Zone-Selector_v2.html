@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 
+    pc : chrome.exe --disable-web-security --user-data-dir="C:/ChromeDev"
+    mac : open -na "Google Chrome" --args --disable-web-security --user-data-dir="/tmp/ChromeDev"
+    -->
+
+
+    <div id="canvasContainer" class="relative">
+        <img src="fuseau-heure.png" class="absolute" id="IMG_ALL">
+
+    </div>
+
+    <h1 id="H1">x : 0 / y : 0 => zone x</h1>
+
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script>
+
+
+        const imageUrls = [ "./Time_Zone_Imga/-11.png",
+                            "./Time_Zone_Imga/-10.png",
+                            "./Time_Zone_Imga/-9.png",
+                            "./Time_Zone_Imga/-8.png",
+                            "./Time_Zone_Imga/-7.png",
+                            "./Time_Zone_Imga/-6.png",
+                            "./Time_Zone_Imga/-5.png",
+                            "./Time_Zone_Imga/-4.png",
+                            "./Time_Zone_Imga/-3.png",
+                            "./Time_Zone_Imga/-2.png",
+                            "./Time_Zone_Imga/-1.png",
+                            "./Time_Zone_Imga/0.png",
+                            "./Time_Zone_Imga/+1.png",
+                            "./Time_Zone_Imga/+2.png",
+                            "./Time_Zone_Imga/+3.png",
+                            "./Time_Zone_Imga/+4.png",
+                            "./Time_Zone_Imga/+5.png",
+                            "./Time_Zone_Imga/+6.png",
+                            "./Time_Zone_Imga/+7.png",
+                            "./Time_Zone_Imga/+8.png",
+                            "./Time_Zone_Imga/+9.png",
+                            "./Time_Zone_Imga/+10.png",
+                            "./Time_Zone_Imga/+11.png",
+                            "./Time_Zone_Imga/+12.png",
+                            "./Time_Zone_Imga/+13.png"]
+
+        const canvasContainer = document.getElementById('canvasContainer');
+        const allCanvas = []
+
+        imageUrls.forEach((url) => {
+        fetch(url)
+            .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Erreur de chargement : ${url}`);
+            }
+            return response.blob(); // Convertit la réponse en blob
+            })
+            .then((blob) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                    // Crée un canvas pour chaque image
+                    const canvas = document.createElement("canvas");
+                    const ctx = canvas.getContext("2d");
+
+                    // Ajuste la taille du canvas à celle de l'image
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+
+                    // Dessine l'image sur le canvas
+                    ctx.drawImage(img, 0, 0);
+
+
+                    // ajouter des classes
+                    canvas.classList.add("absolute");
+                    //canvas.classList.add("h-full");
+                    canvas.classList.add("opacity-80");
+                    canvas.classList.add("z-40");
+
+                    // Ajoute le canvas au conteneur
+                    canvasContainer.appendChild(canvas);
+                    allCanvas.push(canvas)
+                    };
+                    img.src = e.target.result; // Définit la source de l'image comme Data URL
+                };
+            reader.readAsDataURL(blob); // Lit le blob comme une Data URL
+            })
+            .catch((error) => {
+            console.error("Erreur lors du traitement de l'image :", error);
+            });
+        });
+
+
+    </script>
+</head>
+</body>
+</html>
