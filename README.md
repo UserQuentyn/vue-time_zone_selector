@@ -1,60 +1,57 @@
 # [POC] vue-time_zone_selector
 ![Presentation](./Presentation.gif)
 
-## CONTEXT  
-Durant un stage de 3 jours chez [Créalp](https://www.crealp.ch/) , j'ai designé et programmé ce " Time Zone Selectore Picker ". Afin de m'exercer et apprendre de nouvelles chose, surtout en JS et Tailwind 
+## CONTEXTE  
+Durant un stage de 3 jours chez [Créalp](https://www.crealp.ch/), j'ai designé et programmé ce "Time Zone Selector Picker". Ce projet m'a permis de m'exercer et d'apprendre de nouvelles compétences, notamment en JavaScript et Tailwind.
 
 ## DESCRIPTION
-C'est un picker qui permet de selectionner des fuseau horaire afin de voir les pays dans le fusea horaire en question
-## PROGRAMME(S) UTILITSÉ(S)
+C'est un picker qui permet de sélectionner des fuseaux horaires afin de voir les pays correspondant au fuseau horaire choisi.
+
+## PROGRAMME(S) UTILISÉ(S)
 - Photoshop
-- Vscode
-- Première pro
+- VS Code
+- Premiere Pro
 - Firefox
-- Invite de commande
+- Invite de commandes
 
-## TECHNOLOGIE
+## TECHNOLOGIES
 - HTML
-- JS
+- JavaScript
+- Tailwind (CSS)
 
-- TAILWIND (CSS)
+## ALGORITHME
+1. **Charger** les images en mémoire pour une utilisation ultérieure.
+2. Générer les images des fuseaux horaires (boucle `for` en JavaScript pour l'optimisation).
+3. Ajuster la taille des images avec les canvas.
+4. Créer un *canvas* pour chaque image.
+5. Ajouter tous les canvas à une liste.
+6. Vérifier si la souris est en mouvement et uniquement sur l'image ou les images.
+7. **Sauvegarder** la position x/y de la souris.
+8. Déterminer si la position actuelle de la souris correspond à un pixel noir sur le *canvas* de l'image.
+9. Récupérer l'ID de l'image (et du *canvas* associé).
+10. Modifier l'opacité grâce à une classe CSS (via Tailwind).
+11. Sinon, réinitialiser l'opacité à 80 et retirer les modifications temporaires d'opacité.
 
-##  ALGORITHME
-1. "Charger" les image (en memoire, pour plus tard ) .
-
-2. Generer les images "Fuseau Horaire" (Boucle for en JS pour l'optimisation) .
-3. Ajuster la tailles des images avec les canvas .
-4. Creer un "Canvas" pour chaque image .
-5. Ajouter touts les canvas à une list .
-6. Verifier si la souris est en mouvment et uniquement sur l'/les image/es .
-7. "Sauvegarder" la position x/y de la souris .
-8. Regarder sur quel canvas (image) la position de la souris actuelle est noir ( Pixel ) .
-
-9. Recuperer l'id de l'image ( + canvas de l'image )
-10. Modifier l'opaciter grâce à la classe ( css => Tailwind)
-11. Sinon enlever l'opaciter de 10 et et remettre l'opaciter de base ( 80 )
 ## JOURNAL DE BORD
-### - Jours 1/3 :
-- Discution et explication du projet .  
-- BrainStorming .
-- Recherche et detourage des images ( fuseau horaire ). 
-- Creation du repot Github .
+### - Jour 1/3 :
+- Discussion et explication du projet.  
+- Brainstorming.
+- Recherche et détourage des images (fuseaux horaires). 
+- Création du dépôt GitHub.
 
-### - Jours 2/3 :
+### - Jour 2/3 :
+- Découverte des lieux (petite visite du Créalp).
+- Début du codage des *canvas* et affichage des fuseaux horaires (optimisation insuffisante et nombreux problèmes avec les *canvas*).
+- *Commit* & *Push*.
 
-- Decouvert des lieux ( petite viste du Créalp ) .
-- Debut du codage ds canvas et affichage des fuseaux horaires( Mauvaise optimisation et plein de problème avec les canvas ) 
-- (Commit & Push) .
-### - Jours 3/3
-- codage des evenement et changement de classe et d'opacité .
-- Beaucoup d'aide et finition ( + optimisation). 
-- Ecriture du README.md . 
+### - Jour 3/3 :
+- Codage des événements et gestion des classes et de l'opacité.
+- Nombreux ajustements grâce à l'aide reçue et optimisation finale.
+- Rédaction du fichier `README.md`.
 
-##  AMELIORATIONS 
- -  Meilleur detourage et remplissage des images (surtout 5-6-7 );
- -  De meilleures animation ;
-
- -  Possibilité de voir l'heure locale de chaque fuseau( x ) horaire( s ) + systeme nuit / jour avec un dégradé;
- -  Si posssible un tableau qui permetrer de voir touts les pays d'en un fuseau( x ) lorsque l'utilisateur click sur un fuseau(x) .
- - Faire en sorte que la fenêtre sois responsive (IMPORTANT).
-
+## AMÉLIORATIONS 
+- Meilleur détourage et remplissage des images (surtout pour les fuseaux 5, 6, 7).
+- Ajout de meilleures animations.
+- Possibilité d'afficher l'heure locale pour chaque fuseau horaire, avec un système de nuit/jour utilisant un dégradé.
+- Si possible, intégrer un tableau permettant de voir tous les pays d'un fuseau donné lorsque l'utilisateur clique dessus.
+- Assurer que la fenêtre soit responsive (IMPORTANT).
